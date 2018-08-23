@@ -51,6 +51,14 @@ runner01               running (virtualbox)
 
 #### Deployment
 
+This playbook has some dependencies to other roles that must be downloaded before executing the playbook :
+
+```
+ansible-galaxy install -r requirements.yml
+```
+
+This command should download the Docker role from Ansible Galaxy to the local role path.
+
 To deploy the Gitlab Runner instance, you just have to run the Ansible playbook gitlab-runner.yml with this command :
 
 ```

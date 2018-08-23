@@ -9,3 +9,11 @@
     runner_registration_tags: ["dev", "docker"]
   roles:
     - gitlab-runner
+
+- hosts: gitlab-runner
+  remote_user: vagrant
+  become: yes
+  vars:
+    docker_users: ["gitlab-runner", "vagrant"]
+  roles:
+    - docker

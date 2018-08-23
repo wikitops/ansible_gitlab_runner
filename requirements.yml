@@ -1,0 +1,3 @@
+- src: git+https://github.com/wikitops/ansible_docker
+  version: "1.0"
+  name: docker
