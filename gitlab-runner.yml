@@ -1,0 +1,11 @@
+---
+
+- hosts: gitlab-runner
+  remote_user: vagrant
+  become: yes
+  vars:
+    runner_registration_url: "http://gitlab.example.com/"
+    runner_registration_token: "mgAxxXxMSeDutj557Kzo"
+    runner_registration_tags: ["dev", "docker"]
+  roles:
+    - gitlab-runner

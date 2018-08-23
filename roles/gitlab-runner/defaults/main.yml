@@ -1,0 +1,25 @@
+---
+
+###
+# RUNNER
+###
+
+# Gitlab Runner binary
+runner_binary_version: v11.2.0-rc2
+runner_binary_url: "https://gitlab-runner-downloads.s3.amazonaws.com/{{ runner_binary_version }}/binaries/gitlab-runner-linux-amd64"
+
+# Gitlab Runner username
+runner_username: gitlab-runner
+
+# Directory
+runner_working_dir: /data
+
+###
+# GITLAB
+###
+gitlab_runner_description: "{{ ansible_hostname }}"
+runner_registration_url: "http://gitlab.example.com/"
+runner_registration_token: ""
+runner_registration_tags: []
+runner_registration_executor: "docker" # ssh, docker+machine, docker-ssh+machine, kubernetes, docker, parallels, virtualbox, docker-ssh, shell
+runner_registration_docker_image: "alpine:latest"

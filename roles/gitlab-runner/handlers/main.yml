@@ -1,0 +1,4 @@
+---
+
+- name: Restart gitlab-runner
+  command: /usr/local/bin/gitlab-runner restart

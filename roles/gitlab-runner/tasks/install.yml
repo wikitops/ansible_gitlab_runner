@@ -1,0 +1,28 @@
+---
+
+- name: GITLAB RUNNER | Download binary
+  get_url:
+    url: "{{ runner_binary_url }}"
+    dest: /usr/local/bin/gitlab-runner
+    owner: root
+    group: root
+    mode: 0755
+
+- name: GITLAB RUNNER | Create user
+  user:
+    name: "{{ runner_username }}"
+    comment: Gitlab Runner
+    shell: /bin/bash
+    create_home: yes
+
+- name: GITLAB RUNNER | Create directories
+  file:
+    path: "{{ runner_working_dir }}"
+    state: directory
+    owner: "{{ runner_username }}"
+    group: root
+    mode: 0755
+
+- name: GITLAB RUNNER | Installation
+  command: /usr/local/bin/gitlab-runner install --user={{ runner_username }} --working-directory={{ runner_working_dir }}
+  notify: Restart gitlab-runner

@@ -1,0 +1,21 @@
+---
+
+- name: GITLAB RUNNER | List configured runners
+  become: yes
+  become_user: "{{ runner_username }}"
+  command: gitlab-runner list
+  register: configured_runners
+  changed_when: False
+
+- name: GITLAB RUNNER | Register to GitLab
+  become: yes
+  become_user: "{{ runner_username }}"
+  command: gitlab-runner register >
+    --non-interactive
+    --url "{{ runner_registration_url }}"
+    --registration-token "{{ runner_registration_token }}"
+    --description "{{ gitlab_runner_description }}"
+    --tag-list "{{ runner_registration_tags | join(',') }}"
+    --executor "{{ runner_registration_executor }}"
+    --docker-image "{{ runner_registration_docker_image }}"
+  when: runner_registration_token is defined and configured_runners.stderr.find('\n{{ gitlab_runner_description }}') == -1
