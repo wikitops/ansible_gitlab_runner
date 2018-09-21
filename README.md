@@ -14,8 +14,8 @@ What things you need to run this Ansible playbook :
 *   Update the Vagrant file based on your computer (CPU, memory), if needed
 *   You must have download the ubuntu Xenial64 vagrant box :
 
-```
-vagrant box add https://app.vagrantup.com/ubuntu/boxes/xenial64
+```bash
+$ vagrant box add https://app.vagrantup.com/ubuntu/boxes/xenial64
 ```
 *   If you want to register the Gitlab Runner, you have to get a token from your Gitlab server and configure it in the playbook file
 
@@ -29,19 +29,19 @@ Be aware that you need to be in the Vagrant directory to be able to run the comm
 
 Vagrant needs to init the project to run and build it :
 
-```
-vagrant up
+```bash
+$ vagrant up
 ```
 
 After build, you can check which virtual machine Vagrant has created :
 
-```
-vagrant status
+```bash
+$ vagrant status
 ```
 
 If all run like it is expected, you should see something like this :
 
-```
+```bash
 $ vagrant status
 
 Current machine states:
@@ -53,16 +53,16 @@ runner01               running (virtualbox)
 
 This playbook has some dependencies to other roles that must be downloaded before executing the playbook :
 
-```
-ansible-galaxy install -r requirements.yml
+```bash
+$ ansible-galaxy install -r requirements.yml
 ```
 
 This command should download the Docker role from Ansible Galaxy to the local role path.
 
 To deploy the Gitlab Runner instance, you just have to run the Ansible playbook gitlab-runner.yml with this command :
 
-```
-ansible-playbook gitlab-runner.yml
+```bash
+$ ansible-playbook gitlab-runner.yml
 ```
 
 If everything run as expected, the runner should be register on your Gitlab server.
@@ -71,8 +71,8 @@ If everything run as expected, the runner should be register on your Gitlab serv
 
 To destroy on what Vagrant has created, just run this command :
 
-```
-vagrant destroy
+```bash
+$ vagrant destroy
 ```
 
 ## Author
