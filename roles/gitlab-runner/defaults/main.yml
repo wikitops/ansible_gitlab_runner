@@ -5,7 +5,7 @@
 ###
 
 # Gitlab Runner binary
-runner_binary_version: v11.9.0
+runner_binary_version: v12.4.1
 runner_binary_url: "https://gitlab-runner-downloads.s3.amazonaws.com/{{ runner_binary_version }}/binaries/gitlab-runner-linux-amd64"
 
 # Gitlab Runner username
@@ -17,7 +17,7 @@ runner_working_dir: /data
 ###
 # GITLAB
 ###
-gitlab_runner_description: "{{ ansible_hostname }}"
+runner_description: "{{ ansible_hostname }}"
 runner_registration_url: "http://gitlab.example.com/"
 runner_registration_token: ""
 runner_registration_tags: []
